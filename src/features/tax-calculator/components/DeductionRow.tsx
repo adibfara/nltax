@@ -4,7 +4,7 @@ import { formatEuro } from '@/lib/format'
 import { cn } from '@/lib/utils'
 import { RotateCcw, Trash2 } from 'lucide-react'
 import type { RowWaterfall } from '../hooks/useTaxCalculator'
-import { ROW_ACTIONS_WIDTH, ROW_GRID_COLS } from './row-layout'
+import { ROW_ACTIONS_WIDTH, ROW_GRID_COLS, ROW_TITLE_COLS } from './row-layout'
 
 interface DeductionRowProps {
   row: RowWaterfall
@@ -17,9 +17,11 @@ export function DeductionRow({ row, onAmountChange, onToggleZero, onRemove }: De
   const isNegative = row.netAfter < 0
 
   return (
-    <div className="flex items-center gap-3">
-      <div className={`grid flex-1 items-center gap-4 rounded-lg border bg-card px-4 py-3 ${ROW_GRID_COLS}`}>
-        <span className="truncate text-sm font-medium">{row.label}</span>
+    <div className="flex items-center gap-1.5 sm:gap-3">
+      <div
+        className={`grid flex-1 items-center gap-x-2 gap-y-1 rounded-lg border bg-card px-2 py-2 sm:gap-4 sm:px-4 sm:py-3 ${ROW_GRID_COLS}`}
+      >
+        <span className={`truncate text-sm font-medium ${ROW_TITLE_COLS}`}>{row.label}</span>
         <Input
           type="number"
           min={0}
@@ -39,7 +41,7 @@ export function DeductionRow({ row, onAmountChange, onToggleZero, onRemove }: De
           {formatEuro(row.netAfter)}
         </div>
       </div>
-      <div className={`flex shrink-0 items-center justify-start gap-1 ${ROW_ACTIONS_WIDTH}`}>
+      <div className={`flex shrink-0 items-center justify-start gap-0.5 sm:gap-1 ${ROW_ACTIONS_WIDTH}`}>
         <Button
           type="button"
           variant="ghost"

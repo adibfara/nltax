@@ -10,10 +10,10 @@ export function TaxCalculatorPage() {
 
   return (
     <div className="mx-auto flex min-h-screen max-w-3xl flex-col">
-      <div className="flex-1 space-y-4 px-4 pt-8 pb-4">
-        <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="flex-1 space-y-3 px-3 pt-6 pb-4 sm:space-y-4 sm:px-4 sm:pt-8">
+        <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4">
           <div>
-            <h1 className="text-2xl font-bold">NL Salary Calculator</h1>
+            <h1 className="text-xl font-bold sm:text-2xl">NL Salary Calculator</h1>
             <p className="text-sm text-muted-foreground">
               Estimate only, based on 2025 published Box 1 rates. Not payroll-accurate.
             </p>
@@ -31,9 +31,9 @@ export function TaxCalculatorPage() {
           />
         </div>
 
-        <div className="flex items-center gap-3 text-xs font-medium text-muted-foreground">
-          <div className={`grid flex-1 gap-4 px-4 ${ROW_GRID_COLS}`}>
-            <span>Item</span>
+        <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground sm:gap-3">
+          <div className={`grid flex-1 gap-2 px-2 sm:gap-4 sm:px-4 ${ROW_GRID_COLS}`}>
+            <span className="hidden sm:block">Item</span>
             <span>Amount</span>
             <span className="text-right">Gross</span>
             <span className="text-right">Net</span>
@@ -46,6 +46,7 @@ export function TaxCalculatorPage() {
           grossMonthly={salaryResult.grossMonthly}
           netMonthly={salaryResult.netMonthly}
           onChange={(value) => dispatch({ type: 'SET_GROSS_ANNUAL', value })}
+          onReset={() => dispatch({ type: 'RESET_GROSS_ANNUAL' })}
         />
 
         <div className="space-y-2">

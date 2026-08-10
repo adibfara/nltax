@@ -21,7 +21,7 @@ export function TopToggles({
   onResetAll,
 }: TopTogglesProps) {
   return (
-    <div className="flex flex-wrap items-center justify-end gap-6">
+    <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-6">
       <div className="flex items-center gap-2">
         <Label htmlFor="ruling-toggle" className="flex items-center gap-1">
           30% ruling

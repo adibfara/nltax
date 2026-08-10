@@ -18,6 +18,7 @@ export interface CalculatorState {
 
 type Action =
   | { type: 'SET_GROSS_ANNUAL'; value: number }
+  | { type: 'RESET_GROSS_ANNUAL' }
   | { type: 'TOGGLE_RULING' }
   | { type: 'TOGGLE_TAX_CREDITS' }
   | { type: 'SET_ROW_AMOUNT'; id: string; amount: number }
@@ -82,6 +83,8 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
   switch (action.type) {
     case 'SET_GROSS_ANNUAL':
       return { ...state, grossAnnual: Math.max(0, action.value) }
+    case 'RESET_GROSS_ANNUAL':
+      return { ...state, grossAnnual: DEFAULT_STATE.grossAnnual }
     case 'TOGGLE_RULING':
       return { ...state, thirtyPercentRuling: !state.thirtyPercentRuling }
     case 'TOGGLE_TAX_CREDITS':
